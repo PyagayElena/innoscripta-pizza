@@ -1,57 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import logo from './assets/logo.png';
 import './App.css';
+import Pizzas from './components/pizzas/pizzas';
+import Cart from './components/cart/cart';
+import SectionInProgress from './components/section-in-progress/section-in-progress';
 
 function App() {
+  const routes = [
+    { title: 'PIZZAS', path: '/' },
+    { title: 'SALADS', path: '/section-in-progress' },
+    { title: 'DESERTS', path: '/section-in-progress' },
+    { title: 'SAUCES', path: '/section-in-progress' },
+    { title: 'DRINKS', path: '/section-in-progress' }];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+    <Router>
+
+      <header className="header">
+        <img src={logo} className="logo" alt="logo" />
+
+        <ul className="menu-bar">
+          {routes.map(route =>
+            <li key={route.title} className="menu-bar-item">
+              <Link to={route.path} className="menu-bar-link">
+                {route.title}
+              </Link>
+            </li>
+          )}
+        </ul>
+
+        <div className="header-buttons">
+          <button className="currency-button">Currency: $</button>
+          <button className="signin-button">SIGN IN</button>
+        </div>
       </header>
-    </div>
+
+      <Switch>
+        <Route exact path="/" component={Pizzas} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/section-in-progress" component={SectionInProgress} />
+      </Switch>
+
+    </Router>
   );
 }
 
