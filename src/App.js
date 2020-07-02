@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import logo from './assets/logo.png';
-import './App.css';
+import './App.scss';
 import Pizzas from './components/pizzas/pizzas';
 import Cart from './components/cart/cart';
 import SectionInProgress from './components/section-in-progress/section-in-progress';
@@ -22,7 +22,7 @@ function App() {
 
         <ul className="menu-bar">
           {routes.map(route =>
-            <li key={route.title} className="menu-bar-item">
+            <li key={route.title}>
               <Link to={route.path} className="menu-bar-link">
                 {route.title}
               </Link>
@@ -36,12 +36,13 @@ function App() {
         </div>
       </header>
 
-      <Switch>
-        <Route exact path="/" component={Pizzas} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/section-in-progress" component={SectionInProgress} />
-      </Switch>
-
+      <div className="body-container">
+        <Switch>
+          <Route exact path="/" component={Pizzas} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/section-in-progress" component={SectionInProgress} />
+        </Switch>
+      </div>
     </Router>
   );
 }

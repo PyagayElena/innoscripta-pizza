@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+}
+
+button:focus {
+  outline: 0;
+  box-shadow: none!important;
+}
+
+li {
+  list-style-type: none;
 }
 
 code {

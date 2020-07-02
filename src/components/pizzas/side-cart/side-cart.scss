@@ -1,0 +1,130 @@
+.side-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 24px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 10px 0 rgba(83,92,90,.15);
+
+  .cart-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ededed;
+    height: 40px;
+  }
+
+  .cart-title-container {
+    display: flex;
+    line-height: 1.33;
+  }
+
+  .cart-title {
+    display: flex;
+    font-weight: 700;
+    color: #70544f;
+    line-height: 1.33;
+    margin: 0;
+  }
+
+  .cart-count {
+    font-weight: 400;
+    color: #a69895;
+    margin: 0 5px;
+  }
+
+  .cart-clear {
+    background-color: transparent;
+    color: #009471;
+    height: 28px;
+    border: none;
+    font-size: 13px;
+
+    &:hover {
+      color: #006d54;
+    }
+  }
+
+  .cart-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cart-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .cart-item-name-container {
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      font-weight: 700;
+      color: #70544f;
+      margin: 2px;
+    }
+
+    .close {
+      color: #a69895;
+      font-weight: 700;
+      font-family: fantasy;
+      font-size: 14px;
+      border: none;
+
+      &:hover {
+        color: #c21313;
+      }
+    }
+  }
+
+  .footer {
+    height: 30px;
+    padding: 0 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .counter-container {
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .counter {
+    margin: 3px 6px;
+    color: #70544f;
+    font-size: 14px;
+  }
+
+  .counter-button {
+    width: 24px;
+    height: 24px;
+    padding: 0 0 2px 0;
+    border-radius: 50%;
+    border: none;
+    background-color: #e1faf4;
+    color: #009471;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    cursor: pointer;
+
+    &.disabled {
+      background-color: #ededed;
+      color: #bfb7b6;
+      cursor: default;
+    }
+  }
+
+  .price {
+    white-space: nowrap;
+    font-size: 14px;
+    color: #70544f;
+    font-weight: 500;
+  }
+}

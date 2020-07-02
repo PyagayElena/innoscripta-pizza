@@ -1,0 +1,43 @@
+.page-title {
+  color: #70544f;
+}
+
+.pizzas-container {
+  display: flex;
+
+  .cart-section {
+    transition: top 500ms ease-in-out 0s;
+    top: 100px;
+    margin-top: 5px;
+    min-width: 272px;
+    position: sticky;
+  }
+
+  .menu-section {
+    margin-right: 20px;
+    height: 1200px;
+    width: 100%;
+    display: flex;
+  }
+
+  .menu-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  .menu-item {
+    display: flex;
+    width: calc(33.3% - 10px);
+    margin: 5px;
+
+    @media (max-width: 1023px) {
+      width: calc(50% - 10px);
+    }
+  }
+}

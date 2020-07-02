@@ -1,0 +1,81 @@
+.body-container {
+  padding: 0 20px;
+}
+
+.header {
+  position: sticky;
+  box-shadow: 0 2px 24px 0 rgba(83,92,90,.30);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 20px;
+  background-color: white;
+
+  .logo {
+    width: 90px;
+  }
+
+  .menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+  }
+
+  .menu-bar-link {
+    padding: 20px 20px;
+    display: inline-block;
+    font-size: 14px;
+    color: #70544f;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover {
+      color: #c21313;
+    }
+  }
+
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .signin-button {
+    background-color: transparent;
+    color: #009471;
+    height: 44px;
+    width: 68px;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+
+    &:hover {
+      color: #006d54;
+    }
+  }
+
+  .currency-button {
+    width: 100px;
+    height: 48px;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 13px;
+    color: #bfb7b6;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+
+    &:hover {
+      color: #009471;
+    }
+  }
+}
