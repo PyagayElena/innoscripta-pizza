@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Currency } from '../constants'
+import { CURRENCY } from '../constants'
 
 export const UserSlice = createSlice({
   name: 'user',
   initialState: {
     value: {
       id: '',
-      currency: Currency.dollar,
+      currency: CURRENCY.dollar,
       email: '',
       phone: '',
       address: ''
