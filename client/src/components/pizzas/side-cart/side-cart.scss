@@ -1,4 +1,6 @@
 .side-cart {
+  position: sticky;
+  top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -13,6 +15,27 @@
     justify-content: space-between;
     border-bottom: 1px solid #ededed;
     height: 40px;
+  }
+
+  .empty-cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image-container {
+      margin: 35px 35px 15px 35px;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+    }
+
+    .notes {
+      color: #a69895;
+      font-size: 14px;
+      text-align: center;
+    }
   }
 
   .cart-title-container {
@@ -57,14 +80,27 @@
     border-bottom: 1px solid #ededed;
   }
 
-  .cart-item-name-container {
+  .cart-item-details-container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 
-    .name {
-      font-weight: 700;
-      color: #70544f;
-      margin: 2px;
+    .cart-item-details {
+      display: flex;
+      flex-direction: column;
+      margin: 2px 4px 4px 2px;;
+
+      .name {
+        font-weight: 700;
+        color: #70544f;
+        margin: 0;
+      }
+
+      .type {
+        font-size: 12px;
+        color: #a69895;
+        margin: 4px 0;
+      }
     }
 
     .close {
@@ -119,6 +155,10 @@
       color: #bfb7b6;
       cursor: default;
     }
+
+    &:hover {
+      color: #006d54;
+    }
   }
 
   .price {
@@ -126,5 +166,48 @@
     font-size: 14px;
     color: #70544f;
     font-weight: 500;
+  }
+
+  .total-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #70544f;
+    align-items: center;
+    height: 50px;
+    font-weight: 500;
+
+    .total-key {
+      font-size: 14px;
+    }
+
+    .total-value {
+      font-size: 18px;
+    }
+  }
+
+  .order-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+
+    .order-button {
+      vertical-align: middle;
+      height: 48px;
+      padding: 15px 25px;
+      border-radius: 24px;
+      background-color: #009471;
+      border: none;
+      background-color: #e1faf4;
+      color: #009471;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        color: #006d54;
+      }
+    }
   }
 }

@@ -33,7 +33,7 @@
   }
 
   .description {
-    padding: 20px 24px 0 24px;
+    padding: 10px 24px 5px 24px;
     color: #a69895;
     font-size: 14px;
   }
@@ -70,6 +70,10 @@
     line-height: 20px;
     font-size: 20px;
     cursor: pointer;
+
+    &:hover {
+      color: #006d54;
+    }
 
     &.disabled {
       background-color: #ededed;

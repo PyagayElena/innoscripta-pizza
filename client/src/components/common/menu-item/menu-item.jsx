@@ -1,24 +1,41 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import './menu-item.scss'
-import tempImage from '../../../assets/chicken-club.jpg'
+import { add, remove, selectorCart } from '../../../store/cart-slice'
+import NumberToPrice from '../../../helpers/price'
+import { selectorUser } from '../../../store/user-slice'
 
-export default function MenuItem() {
+export default function MenuItem({ data }) {
+
+  const cart = useSelector(selectorCart);
+  const user = useSelector(selectorUser);
+  const dispatch = useDispatch();
+
   return (
     <div className='menu-item-card'>
-      <figure className='image-container'>
-        <img src={tempImage} className='image' alt='menu-item' />
-      </figure>
-      <div className='name'>
-        <h3>Chicken Club</h3>
+      <div>
+        <figure className='image-container'>
+          {data.image && <img src={require(`../../../assets/${data.image}`)} className='image' alt='menu-item' />}
+        </figure>
+        <div className='name'>
+          {data.title && <h3>{data.title}</h3>}
+        </div>
+        {data.ingredients && <div className='description'>{data.ingredients}</div>}
       </div>
-      <div className='description'>Grilled chicken, cherry tomatoes, ricotta, fresh parsley, mozzarella, bacon, red onions</div>
+
       <div className='footer'>
         <div className='counter-container'>
-          <button className='counter-button disabled'>-</button>
-          <div className='counter'>2</div>
-          <button className='counter-button'>+</button>
+          <button className={`counter-button ${!cart.products[data._id] && 'disabled'}`}
+                  onClick={() => cart.products[data._id] && dispatch(remove(data))}>
+            -
+          </button>
+          <div className='counter'>{cart.products[data._id] ? cart.products[data._id].count : 0}</div>
+          <button className='counter-button'
+                  onClick={() => dispatch(add(data))}>
+            +
+          </button>
         </div>
-        <div className='price'>$395</div>
+        {data.price !== undefined && <div className='price'>{NumberToPrice(data.price, user.currency)}</div>}
       </div>
     </div>
   );
