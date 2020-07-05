@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const defaultCart = { products: {}, totalCount: 0, totalCost: 0 };
+// $5 - delivery costs
+const defaultCart = { products: {}, totalCount: 0, totalCost: 5 };
 
 export const CartSlice = createSlice({
   name: 'cart',

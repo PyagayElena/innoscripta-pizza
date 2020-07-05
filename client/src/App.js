@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import logo from './assets/logo.png';
 import './App.scss';
-import Pizzas from './components/pizzas/pizzas';
-import Cart from './components/cart/cart';
+import Menu from './components/menu/menu';
+import Order from './components/order/order';
 import SectionInProgress from './components/section-in-progress/section-in-progress';
 import { useDispatch, useSelector } from 'react-redux'
 import { changeCurrency, selectorUser } from './store/user-slice'
@@ -51,8 +51,8 @@ function App() {
 
       <div className="body-container">
         <Switch>
-          <Route exact path="/" component={Pizzas} />
-          <Route path="/cart" component={Cart} />
+          <Route exact path="/" component={Menu} />
+          <Route path="/order" component={Order} />
           <Route path="/salads" component={SectionInProgress} />
           <Route path="/desserts" component={SectionInProgress} />
           <Route path="/sauces" component={SectionInProgress} />

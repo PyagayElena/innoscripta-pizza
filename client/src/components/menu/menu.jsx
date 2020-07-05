@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './pizzas.scss'
-import MenuItem from '../common/menu-item/menu-item'
+import './menu.scss'
+import MenuItem from './menu-item/menu-item'
 import SideCart from './side-cart/side-cart'
 import ProductService from '../../services/product'
 
-export default function Pizzas() {
+export default function Menu() {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,6 +12,7 @@ export default function Pizzas() {
     const fetchData = async () => {
       setIsLoading(true);
       const productService = new ProductService();
+      // ToDo: Make dynamic service call for other menu sections
       const result = await productService.getPizzaList();
       setList(result);
       setIsLoading(false);
