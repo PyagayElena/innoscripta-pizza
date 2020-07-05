@@ -3,6 +3,7 @@ import './menu.scss'
 import MenuItem from './menu-item/menu-item'
 import SideCart from './side-cart/side-cart'
 import ProductService from '../../services/product'
+import Loader from '../common/loader/loader'
 
 export default function Menu() {
   const [list, setList] = useState([]);
@@ -22,7 +23,7 @@ export default function Menu() {
   }, []);
 
   return (
-    isLoading ? <h2 className='page-title'>Loading...</h2> :
+    isLoading ? <Loader /> :
     <>
       <h2 className='page-title'>Pizzas</h2>
       <div className='pizzas-container'>

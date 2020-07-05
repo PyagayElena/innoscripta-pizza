@@ -1,4 +1,12 @@
 .body-container {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  min-width: 759px;
+  max-width: 1200px;
+  width: 1200px;
   padding: 0 20px;
 }
 
@@ -7,13 +15,18 @@
   box-shadow: 0 2px 24px 0 rgba(83,92,90,.30);
   top: 0;
   left: 0;
+  min-width: 850px;
   z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
-  padding: 0 20px;
   background-color: white;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .logo {
     width: 90px;
@@ -67,9 +80,15 @@
     &:hover {
       color: #006d54;
     }
+
+    &.disabled {
+      color: #bfb7b6;
+      pointer-events: none;
+    }
   }
 
   .currency-button {
+    background-color: transparent;
     width: 30px;
     height: 48px;
     vertical-align: middle;
