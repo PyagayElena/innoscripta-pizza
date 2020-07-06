@@ -10,8 +10,10 @@ export const CURRENCY_SIGN = {
 
 // API paths
 export const API = '/api/v1';
+export const API_USER_REGISTRATION = `${API}/user/registration`;
+export const API_USER_LOGIN = `${API}/token/obtaining`;
 export const API_GET_PIZZAS = `${API}/products/pizza`;
 export const API_GET_USER = (userId) => `${API}/user/${userId}`;
 export const API_UPDATE_USER = `${API}/user/update`;
 export const API_GET_HISTORY = (userId) => `${API}/orders/${userId}`;
-export const API_POST_ORDER = `${API}/order`
+export const API_POST_ORDER = `${API}/order`;

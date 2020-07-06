@@ -8,12 +8,8 @@ class Fetcher {
     }
   }
 
-  addHeader(name, value) {
-    this.headers[name] = value
-  }
-
   get(url, customHeaders = {}) {
-    return fetch(`${url}`, this.defaultRequestInit('get', customHeaders))
+    return fetch(`${url}`, this.defaultRequestInit('get', customHeaders));
   }
 
   post(url, body = {}, customHeaders = {}) {
@@ -21,7 +17,7 @@ class Fetcher {
     return fetch(url, {
       ...this.defaultRequestInit('post', customHeaders),
       body: JSON.stringify(body)
-    })
+    });
   }
 
   defaultRequestInit(method, customHeaders = {}): RequestInit {
@@ -29,7 +25,7 @@ class Fetcher {
       method,
       headers: {...this.headers, ...customHeaders},
       credentials: 'include'
-    }
+    };
   }
 }
 

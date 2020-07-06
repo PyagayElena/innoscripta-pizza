@@ -1,16 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CURRENCY } from '../constants'
 
+const defaultUser = {
+  id: '',
+  currency: CURRENCY.dollar,
+  email: '',
+  phone: '',
+  address: ''
+};
+
 export const UserSlice = createSlice({
   name: 'user',
   initialState: {
-    value: {
-      id: '',
-      currency: CURRENCY.dollar,
-      email: '',
-      phone: '',
-      address: ''
-    }
+    value: defaultUser
   },
   reducers: {
     update: (state, action) => {
@@ -19,10 +21,13 @@ export const UserSlice = createSlice({
     changeCurrency: (state, action) => {
       state.value.currency = action.payload;
     },
+    signOut: state => {
+      state.value = defaultUser;
+    }
   }
 });
 
-export const { update, changeCurrency } = UserSlice.actions;
+export const { update, changeCurrency, signOut } = UserSlice.actions;
 
 export const selectorUser = state => state.user.value;
 

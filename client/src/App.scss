@@ -87,6 +87,20 @@
     }
   }
 
+  .profile-button {
+    font-size: 14px;
+    color: #009471;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    margin-left: 10px;
+
+    &:hover {
+      color: #006d54;
+    }
+  }
+
   .currency-button {
     background-color: transparent;
     width: 30px;

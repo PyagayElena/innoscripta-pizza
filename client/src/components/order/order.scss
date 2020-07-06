@@ -87,4 +87,42 @@
       }
     }
   }
+
+  .success-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    .success-message {
+      color: #70544f;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .success-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    .success-button {
+      height: 30px;
+      width: 50px;
+      padding: 0 15px;
+      border-radius: 24px;
+      border: none;
+      background-color: #e1faf4;
+      color: #009471;
+      font-weight: 700;
+      font-size: 14px;
+      vertical-align: middle;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        color: #006d54;
+      }
+    }
+  }
 }

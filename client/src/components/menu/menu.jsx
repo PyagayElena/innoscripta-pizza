@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './menu.scss'
-import MenuItem from './menu-item/menu-item'
-import SideCart from './side-cart/side-cart'
-import ProductService from '../../services/product'
-import Loader from '../common/loader/loader'
+import './menu.scss';
+import MenuItem from './menu-item/menu-item';
+import SideCart from './side-cart/side-cart';
+import ProductService from '../../services/product';
+import Loader from '../common/loader/loader';
+import { useDispatch, useSelector } from 'react-redux'
+import { selectorProduct, update } from '../../store/product-slice'
 
 export default function Menu() {
-  const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const list = useSelector(selectorProduct);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,11 +18,14 @@ export default function Menu() {
       const productService = new ProductService();
       // ToDo: Make dynamic service call for other menu sections
       const result = await productService.getPizzaList();
-      setList(result);
+      dispatch(update(result));
       setIsLoading(false);
     };
 
-    fetchData();
+    if (!list || !list.length) {
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

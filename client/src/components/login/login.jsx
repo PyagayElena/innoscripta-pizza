@@ -1,21 +1,70 @@
 import React, { useState } from 'react'
 import './login.scss'
 import { useForm } from 'react-hook-form'
+import UserService from '../../services/user'
+import { useDispatch } from 'react-redux'
+import { update } from '../../store/user-slice'
 
-export default function Login() {
+export default function Login({ handleClose }) {
   const [ isSignin, setIsSignin ] = useState(true);
+  const [ error, setError ] = useState(null);
+  const [ isLoading, setIsLoading ] = useState(false);
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, watch, errors, reset, formState } = useForm({
     mode: "onChange"
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit = async ({ confirmPassword, ...params }) => {
+    setIsLoading(true);
+    const userService = new UserService();
+
+    const login = async () => {
+      const result = await userService.login(params);
+      if (!!result && !!result.id) {
+        const user = await userService.getUserInfo(result.id);
+        dispatch(update(user));
+        setIsLoading(false);
+        handleClose();
+        reset();
+      } else {
+        setIsLoading(false);
+        setError('Wrong password or email');
+      }
+    }
+
+    if (isSignin) {
+      await login()
+    } else {
+      const registrationResult = await userService.register(params);
+      if (!!registrationResult) {
+        await login();
+      } else {
+        setIsLoading(false);
+        setError('Failed to register. Please, try again.');
+      }
+    }
   };
 
+  const onChange = () => {
+    if (!!error) {
+      setError(null);
+    }
+  }
+
+  const onCancel = () => {
+    reset();
+    setIsSignin(true);
+  }
+
+  const onSignUp = () => {
+    onChange();
+    reset();
+    setIsSignin(false);
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
       <label>
         Email
         <input
@@ -63,16 +112,20 @@ export default function Login() {
       {!isSignin && !!watch('password') && errors.confirmPassword &&
         <div className='error'>Passwords don't match.</div>}
 
+      {!!error && <div className='error'>{error}</div>}
+
       {isSignin ?
         <div className='login-footer'>
-          <button className='cancel' onClick={() => setIsSignin(false)}>Sign up</button>
-          <button className={`submit ${!formState.isValid && 'disabled'}`} type="submit">
+          <button className={`cancel ${isLoading && 'disabled'}`} onClick={onSignUp}>Sign up</button>
+          <button className={`submit ${!formState.isValid && 'disabled'} ${isLoading && 'disabled spinner'}`}
+                  type="submit">
             SIGN IN
           </button>
         </div> :
         <div className='login-footer'>
-          <button className='cancel' onClick={() => setIsSignin(true)}>Cancel</button>
-          <button className={`submit ${!formState.isValid && 'disabled'}`} type="submit">
+          <button className={`cancel ${isLoading && 'disabled'}`} onClick={onCancel}>Cancel</button>
+          <button className={`submit ${!formState.isValid && 'disabled'} ${isLoading && 'disabled spinner'}`}
+                  type="submit">
             SIGN UP
           </button>
         </div>}

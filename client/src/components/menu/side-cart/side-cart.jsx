@@ -17,7 +17,10 @@ export default function SideCart() {
     <div className='side-cart'>
       <div className='cart-header'>
         <div className='cart-title-container'>
-          <h3 className='cart-title'>Cart</h3>
+          <h3 className={`cart-title ${!cart.totalCount && 'disabled'}`}
+              onClick={() => history.push("/order")}>
+            Cart
+          </h3>
           {!!cart.totalCount &&
             <h3 className='cart-count'>
               { `(${cart.totalCount})` }
